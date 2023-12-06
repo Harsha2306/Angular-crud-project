@@ -1,0 +1,75 @@
+<div class="container mt-5">
+  <h1 class="display-4 text-center">Add new Employee</h1>
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="id" class="form-label">Id</label>
+      <input type="number" id="id" class="form-control" formControlName="id" />
+      <small
+        *ngIf="
+          employeeForm.controls.id.touched && !employeeForm.controls.id.dirty
+        "
+        style="color: red"
+        >*id cannot be empty</small
+      >
+    </div>
+    <div class="mb-3">
+      <label for="firstName" class="form-label">FirstName</label>
+      <input
+        type="text"
+        id="firstName"
+        class="form-control"
+        formControlName="firstName"
+      />
+      <small
+        *ngIf="
+          employeeForm.controls.firstName.touched &&
+          !employeeForm.controls.firstName.dirty
+        "
+        style="color: red"
+        >*FirstName cannot be empty</small
+      >
+    </div>
+    <div class="mb-3">
+      <label for="lastName" class="form-label">LastName</label>
+      <input
+        type="text"
+        id="lastName"
+        class="form-control"
+        formControlName="lastName"
+      />
+      <small
+        *ngIf="
+          employeeForm.controls.lastName.touched &&
+          !employeeForm.controls.lastName.dirty
+        "
+        style="color: red"
+        >*LastName cannot be empty</small
+      >
+    </div>
+    <div class="mb-3">
+      <label for="mobileNumber" class="form-label">MobileNumber</label>
+      <input
+        type="number"
+        name=""
+        id="mobileNumber"
+        class="form-control"
+        formControlName="mobileNumber"
+      />
+      <small
+        *ngIf="
+          employeeForm.controls.mobileNumber.touched &&
+          !employeeForm.controls.mobileNumber.dirty
+        "
+        style="color: red"
+        >*Mobile number cannot be empty</small
+      >
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!employeeForm.valid"
+    >
+      Submit
+    </button>
+  </form>
+</div>

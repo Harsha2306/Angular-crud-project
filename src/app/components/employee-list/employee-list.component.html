@@ -1,0 +1,56 @@
+<div class="container p-4 mt-4">
+  <div class="row">
+    <button class="btn btn-primary" [routerLink]="'/addEmployee'">
+      Add Employee
+    </button>
+  </div>
+  <div class="row mt-4" *ngIf="!loading; else elseBlock">
+    <table class="table table-striped">
+      <thead>
+        <tr class="text-center">
+          <th class="display-6">Id</th>
+          <th class="display-6">Firstname</th>
+          <th class="display-6">Lastname</th>
+          <th class="display-6">Mobile Number</th>
+          <th class="display-6">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          class="text-center"
+          *ngFor="let employee of employees; trackBy: identify"
+        >
+          <td>{{ employee.id }}</td>
+          <td>{{ employee.firstName }}</td>
+          <td>{{ employee.lastName }}</td>
+          <td>{{ employee.mobileNumber }}</td>
+          <td>
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <button
+                    class="btn btn-secondary"
+                    (click)="onEdit(employee.id)"
+                  >
+                    Edit
+                  </button>
+                </div>
+                <div class="col">
+                  <button
+                    class="btn btn-danger"
+                    (click)="onDelete(employee.id)"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #elseBlock>
+    <p class="text-center">loading...</p>
+  </ng-template>
+</div>
